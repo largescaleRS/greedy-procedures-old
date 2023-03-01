@@ -146,6 +146,28 @@ def loadTrue(L):
     return slns, means
 
 
+def loadTPMax(L1, L2):
+    total = int((L1 - 1) ** 2 * (L2-2)/2)
+    means = np.loadtxt("results_{}_{}.csv".format(L1, L2), delimiter=",")
+    count = 0
+    slns = []
+    for s1 in range(1, L1-1): # 1-18
+        for s2 in range(1, L1-s1): # 1-18
+            s3 = L1 - s1 - s2
+            for s4 in range(1, L2): # 1-19
+                s5 = L2 - s4
+                sln = [s1, s2, s3, s4, s5]
+                # true_values[sln] = results[count]
+                slns.append(sln)
+                count += 1
+    slns = np.array(slns)
+    # best_mean = np.max(means)
+    # best_sln = slns[np.argmax(means)]
+    # slns = slns[np.argsort(-means)]
+    # means = -np.sort(-means)
+    return slns, means
+
+
 def TpMax(_njobs,  _nstages, _burnin, r, b, simulator):
     sTime1 = np.random.exponential(1/r[0], _njobs)
     sTime2 = np.random.exponential(1/r[1], _njobs)
