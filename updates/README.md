@@ -1,3 +1,3 @@
-EFGPlusPlus.py includes the implementation of the parallelized EFG++ procedure. The parallelization is based on the library **multipleprocessing**. The experiments included in EC4 are all conducted on a server with 4 Intel(R) Xeon(R) Gold 6254 CPUs (72 cores) and 512 GB memory.
+EFGPlusPlus.py includes the implementation of the parallelized EFG++ procedure. The parallelization is based on the library **multipleprocessing**. The experiments included in EC4 are all conducted on a server with 4 Intel(R) Xeon(R) Gold 6254 CPUs (embedding in a total of 72 cores) and 512 GB memory.
 
 For the experiment with random simulation times described in EC 4.3.2, we use the library **win_precise_time** to control the sleep of the processors, as shown in the function TpMax_pause (utils.py). We do this because, on Windows systems, the time.sleep() function has an unsatisfying precision level. We note that this is no longer an issue when using time.sleep() on a Mac OS system. 
